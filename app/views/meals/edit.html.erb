@@ -1,0 +1,142 @@
+<<<<<<< HEAD
+<!-- <br /><br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			
+		</div>
+		<div class="col-md-9">
+			<h3>Restaurant Admin Backend</h3>
+			<div class="pull-right">
+				<%=link_to 'Logout' ,log_out_path, method: :delete, class: "btn btn-warning", style: "margin-top: -30px;" %>
+			</div>
+		</div>
+	</div>
+	<d>
+</div>
+<br /><br /> -->
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <%=link_to 'Home',admins_path%>
+                </li>
+                <li>
+                    <%=link_to 'Tables',tables_path%>
+                </li>
+                <li>
+                    <%=link_to 'Meals',meals_path%>
+                </li>
+                <li>
+                    <%=link_to 'Restaurant Details',edit_detail_path(@detail)%>
+                </li>
+                <li>
+                    <%=link_to 'Reports',reports_path%>
+                </li>
+                <li>
+                    <%=link_to 'Users',users_path %>
+                </li>
+                <li>
+                    <%=link_to 'Logout',log_out_path %>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                    	<a href="#menu-toggle" class="btn btn-default pull-right" id="menu-toggle">Toggle Menu</a>
+                        <h1>Edit Details For <%=@meal.name_english%></h1>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-lg-3">
+                		<%=link_to 'Back To Meals',meals_path,:class=>"btn btn-primary btn-large"%>
+                	</div>
+                </div><br /><br />
+                <div class="row">
+                    <div class="col-lg-6">
+                    	<%=render :partial=>"editForm"%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+=======
+<!-- <br /><br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			
+		</div>
+		<div class="col-md-9">
+			<h3>Restaurant Admin Backend</h3>
+			<div class="pull-right">
+				<%=link_to 'Logout' ,log_out_path, method: :delete, class: "btn btn-warning", style: "margin-top: -30px;" %>
+			</div>
+		</div>
+	</div>
+	<d>
+</div>
+<br /><br /> -->
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <%=link_to 'Home',admins_path%>
+                </li>
+                <li>
+                    <%=link_to 'Tables',tables_path%>
+                </li>
+                <li>
+                    <%=link_to 'Meals',meals_path%>
+                </li>
+                <li>
+                    <%=link_to 'Restaurant Details',edit_detail_path(@detail)%>
+                </li>
+                <li>
+                    <%=link_to 'Reports',reports_path%>
+                </li>
+                <li>
+                    <%=link_to 'Users',users_path %>
+                </li>
+                <li>
+                    <%=link_to 'Logout',log_out_path %>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                    	<a href="#menu-toggle" class="btn btn-default pull-right" id="menu-toggle">Toggle Menu</a>
+                        <h1>Edit Details For <%=@meal.name_english%></h1>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-lg-3">
+                		<%=link_to 'Back To Meals',meals_path,:class=>"btn btn-primary btn-large"%>
+                	</div>
+                </div><br /><br />
+                <div class="row">
+                    <div class="col-lg-6">
+                    	<%=render :partial=>"editForm"%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787
+    </div>

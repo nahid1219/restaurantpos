@@ -1,0 +1,49 @@
+<<<<<<< HEAD
+
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h6><%= pluralize(@order.errors.count, "error") %> prohibited this doctor from being saved:</h6>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%=f.hidden_field :language,:value=>@language%>
+  <%=f.submit 'Edit Order',:class=>"btn btn-primary"%><%=link_to 'Back To Orders',new_order_path,:class=>"btn btn-info",:style=>"margin-left: 10px;"%><br /><br />
+  <label>Meal</label><label style="margin-left: 100px;">Type</label><label style="margin-left: 70px;">Quantity</label><br />
+  <div id="meals" style="height: 150px; overflow-y: auto; border-color: black; border-width:thick; border: *;">
+  	 
+  </div>
+  <br /><br />
+
+<% end %>
+
+=======
+
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h6><%= pluralize(@order.errors.count, "error") %> prohibited this doctor from being saved:</h6>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%=f.hidden_field :language,:value=>@language%>
+  <%=f.submit 'Edit Order',:class=>"btn btn-primary"%><%=link_to 'Back To Orders',new_order_path,:class=>"btn btn-info",:style=>"margin-left: 10px;"%><br /><br />
+  <label>Meal</label><label style="margin-left: 100px;">Type</label><label style="margin-left: 70px;">Quantity</label><br />
+  <div id="meals" style="height: 150px; overflow-y: auto; border-color: black; border-width:thick; border: *;">
+  	 
+  </div>
+  <br /><br />
+
+<% end %>
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

@@ -1,0 +1,59 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paris Dhaba</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+</head>
+<body style="background-color: #EEEEEE;">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<%= yield %>	
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	if($("#menu-toggle").length!=0){
+		$("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });}
+    if($("#new_meal").length!=0){
+    	//meal_name_urdu
+    	$("#meal_name_urdu").attr("lang", "ur");
+    }
+</script>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paris Dhaba</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+</head>
+<body style="background-color: #EEEEEE;">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<%= yield %>	
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	if($("#menu-toggle").length!=0){
+		$("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });}
+    if($("#new_meal").length!=0){
+    	//meal_name_urdu
+    	$("#meal_name_urdu").attr("lang", "ur");
+    }
+</script>
+</body>
+</html>
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

@@ -1,0 +1,93 @@
+<<<<<<< HEAD
+<div style="height: 150px; overflow-y: auto; border-color: black; border-width:thick; border: *;">
+<%if @language=="Urdu"%>
+<table class="table table-bordered table-condensed" id="ordered_meals">
+	<tr>
+		<th>Name</th>
+		<th>Quantity</th>
+	</tr>
+	<%@ordered_meals.each do |meal|%>
+		<%if !meal.cancelled%>
+		<tr>
+			<td><%=meal.meal.name_urdu+meal.get_category_for_ticket%></td>
+			<td><%=meal.quantity.to_s%><%=link_to 'x',order_path(@order,:mealid=>meal.meal.id),:method=>:delete,:confirm=>"Are You Sure You Want To Delete This Item?",:class=>"pull-right btn btn-default", :style=>"height: 20px; width: 5px; padding-top:0px; padding-left: 3px;"%></td>
+		</tr>
+		<%end%>
+	<%end%>
+	<%@ordered_deals.each do |meal|%>
+		<%if !meal.cancelled%>
+		<tr>
+			<td><%=meal.deal.name%></td>
+			<td><%=meal.quantity.to_s%><%=link_to 'x',order_path(@order,:dealid=>meal.deal.id),:method=>:delete,:confirm=>"Are You Sure You Want To Delete This Item?",:class=>"pull-right btn btn-default", :style=>"height: 20px; width: 5px; padding-top:0px; padding-left: 3px;"%></td>
+		</tr>
+		<%end%>
+	<%end%>
+</table>
+<%else%>
+<table class="table table-bordered table-condensed" id="ordered_meals">
+	<tr>
+		<th>Name</th>
+		<th>Quantity</th>
+	</tr>
+	<%@ordered_meals.each do |meal|%>
+		<tr>
+			<td><%=meal.meal.name_english+" "+meal.category%></td>
+			<td><%=meal.quantity.to_s%><%=link_to 'x',order_path(@order,:mealid=>meal.meal.id),:method=>:delete,:confirm=>"Are You Sure You Want To Delete This Item?",:class=>"pull-right btn btn-default", :style=>"height: 20px; width: 5px; padding-top:0px; padding-left: 3px;"%></td>
+		</tr>
+	<%end%>
+	<%@ordered_deals.each do |meal|%>
+		<tr>
+			<td><%=meal.deal.name%></td>
+			<td><%=meal.quantity.to_s%><%=link_to 'x',order_path(@order,:dealid=>meal.deal.id),:method=>:delete,:confirm=>"Are You Sure You Want To Delete This Item?",:class=>"pull-right btn btn-default", :style=>"height: 20px; width: 5px; padding-top:0px; padding-left: 3px;"%></td>
+		</tr>
+	<%end%>
+</table>
+<%end%>
+</div>
+=======
+<div style="height: 150px; overflow-y: auto; border-color: black; border-width:thick; border: *;">
+<%if @language=="Urdu"%>
+<table class="table table-bordered table-condensed" id="ordered_meals">
+	<tr>
+		<th>Name</th>
+		<th>Quantity</th>
+	</tr>
+	<%@ordered_meals.each do |meal|%>
+		<%if !meal.cancelled%>
+		<tr>
+			<td><%=meal.meal.name_urdu+meal.get_category_for_ticket%></td>
+			<td><%=meal.quantity.to_s%><%=link_to 'x',order_path(@order,:mealid=>meal.meal.id),:method=>:delete,:confirm=>"Are You Sure You Want To Delete This Item?",:class=>"pull-right btn btn-default", :style=>"height: 20px; width: 5px; padding-top:0px; padding-left: 3px;"%></td>
+		</tr>
+		<%end%>
+	<%end%>
+	<%@ordered_deals.each do |meal|%>
+		<%if !meal.cancelled%>
+		<tr>
+			<td><%=meal.deal.name%></td>
+			<td><%=meal.quantity.to_s%><%=link_to 'x',order_path(@order,:dealid=>meal.deal.id),:method=>:delete,:confirm=>"Are You Sure You Want To Delete This Item?",:class=>"pull-right btn btn-default", :style=>"height: 20px; width: 5px; padding-top:0px; padding-left: 3px;"%></td>
+		</tr>
+		<%end%>
+	<%end%>
+</table>
+<%else%>
+<table class="table table-bordered table-condensed" id="ordered_meals">
+	<tr>
+		<th>Name</th>
+		<th>Quantity</th>
+	</tr>
+	<%@ordered_meals.each do |meal|%>
+		<tr>
+			<td><%=meal.meal.name_english+" "+meal.category%></td>
+			<td><%=meal.quantity.to_s%><%=link_to 'x',order_path(@order,:mealid=>meal.meal.id),:method=>:delete,:confirm=>"Are You Sure You Want To Delete This Item?",:class=>"pull-right btn btn-default", :style=>"height: 20px; width: 5px; padding-top:0px; padding-left: 3px;"%></td>
+		</tr>
+	<%end%>
+	<%@ordered_deals.each do |meal|%>
+		<tr>
+			<td><%=meal.deal.name%></td>
+			<td><%=meal.quantity.to_s%><%=link_to 'x',order_path(@order,:dealid=>meal.deal.id),:method=>:delete,:confirm=>"Are You Sure You Want To Delete This Item?",:class=>"pull-right btn btn-default", :style=>"height: 20px; width: 5px; padding-top:0px; padding-left: 3px;"%></td>
+		</tr>
+	<%end%>
+</table>
+<%end%>
+</div>
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

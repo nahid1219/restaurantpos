@@ -1,0 +1,81 @@
+<<<<<<< HEAD
+<p style="position:relative; left:0px; font-size: medium;"><%=image_tag "logo.png",:style=>"width: 80px; height: 60px;" %></p>
+<p style="font-size: medium; position: relative; left: 70px;">
+	Paris Dhaba
+</p>
+<p style="position:relative; left:0px; font-size: medium;"><%=@detail.address+","+@detail.city%></p>
+<%if @order.table_id!=nil%>
+<p style="position:relative; left:0px; font-size: medium;"><%="Bill For Table "+@order.table.nmr.to_s%></p>
+<p style="position:relative; left:0px; font-size: medium;"><%="Receipt No "+@order.receiptno%></p>
+<%else%>
+<p style="position:relative; left:0px; font-size: medium;"><%="Receipt No "+@order.receiptno%></p>
+<%end%>
+<table style="font-size: 14px; border: 1px solid black;">
+	<tr style="border: 1px solid black;">
+		<th style="border: 1px solid black;">Name</th>
+		<th style="border: 1px solid black;">Cat</th>
+		<th style="border: 1px solid black;">Qty</th>
+		<th style="border: 1px solid black;">Rate</th>
+		<th style="border: 1px solid black;">Price</th>
+	</tr>
+	<%@bill.each do |bill_item,value|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=bill_item.to_s%></td>
+			<td style="border: 1px solid black;"><%=value[:category]%></td>
+			<td style="border: 1px solid black;"><%=value[:quantity].to_s%></td>
+			<td style="border: 1px solid black;"><%=value[:rate].to_s%></td>
+			<td style="border: 1px solid black;"><%=value[:total].to_s%></td>
+		</tr>
+	<%end%>
+</table>
+<br />
+<p style="position:relative; left:10px; font-size: mediumer;">*GST Included</p>
+<p style="position:relative; left:10px; font-size: medium;">Total       : Rs.<%=@total%></p>
+<!-- <p style="position:relative; left:10px;">Amount Taken: Rs.<%=@order.amount_received%></p>
+<p style="position:relative; left:10px;">Change      : Rs.<%=@order.change%></p> -->
+<p style="font-size: medium;">
+<%="Phone 1: "+@detail.phone1%></p>
+<p style="font-size: medium;"><%="Phone 2: "+@detail.phone2%></p>
+
+
+=======
+<p style="position:relative; left:0px; font-size: medium;"><%=image_tag "logo.png",:style=>"width: 80px; height: 60px;" %></p>
+<p style="font-size: medium; position: relative; left: 70px;">
+	Paris Dhaba
+</p>
+<p style="position:relative; left:0px; font-size: medium;"><%=@detail.address+","+@detail.city%></p>
+<%if @order.table_id!=nil%>
+<p style="position:relative; left:0px; font-size: medium;"><%="Bill For Table "+@order.table.nmr.to_s%></p>
+<p style="position:relative; left:0px; font-size: medium;"><%="Receipt No "+@order.receiptno%></p>
+<%else%>
+<p style="position:relative; left:0px; font-size: medium;"><%="Receipt No "+@order.receiptno%></p>
+<%end%>
+<table style="font-size: 14px; border: 1px solid black;">
+	<tr style="border: 1px solid black;">
+		<th style="border: 1px solid black;">Name</th>
+		<th style="border: 1px solid black;">Cat</th>
+		<th style="border: 1px solid black;">Qty</th>
+		<th style="border: 1px solid black;">Rate</th>
+		<th style="border: 1px solid black;">Price</th>
+	</tr>
+	<%@bill.each do |bill_item,value|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=bill_item.to_s%></td>
+			<td style="border: 1px solid black;"><%=value[:category]%></td>
+			<td style="border: 1px solid black;"><%=value[:quantity].to_s%></td>
+			<td style="border: 1px solid black;"><%=value[:rate].to_s%></td>
+			<td style="border: 1px solid black;"><%=value[:total].to_s%></td>
+		</tr>
+	<%end%>
+</table>
+<br />
+<p style="position:relative; left:10px; font-size: mediumer;">*GST Included</p>
+<p style="position:relative; left:10px; font-size: medium;">Total       : Rs.<%=@total%></p>
+<!-- <p style="position:relative; left:10px;">Amount Taken: Rs.<%=@order.amount_received%></p>
+<p style="position:relative; left:10px;">Change      : Rs.<%=@order.change%></p> -->
+<p style="font-size: medium;">
+<%="Phone 1: "+@detail.phone1%></p>
+<p style="font-size: medium;"><%="Phone 2: "+@detail.phone2%></p>
+
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

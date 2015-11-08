@@ -1,0 +1,37 @@
+<<<<<<< HEAD
+
+<%= form_for(@deal) do |f| %>
+  <% if @deal.errors.any? %>
+    <div id="error_explanation">
+      <ul style="list-style: none;">
+      <% @deal.errors.full_messages.each do |msg| %>
+        <li><%=msg%></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.number_field :price,value: @deal.price,class: "form-control btn btn-default",:min=>1 %>
+  </p><br />
+  <%=f.submit 'Update Deal',:class=>"btn btn-primary"%>
+<% end %>
+
+=======
+
+<%= form_for(@deal) do |f| %>
+  <% if @deal.errors.any? %>
+    <div id="error_explanation">
+      <ul style="list-style: none;">
+      <% @deal.errors.full_messages.each do |msg| %>
+        <li><%=msg%></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.number_field :price,value: @deal.price,class: "form-control btn btn-default",:min=>1 %>
+  </p><br />
+  <%=f.submit 'Update Deal',:class=>"btn btn-primary"%>
+<% end %>
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

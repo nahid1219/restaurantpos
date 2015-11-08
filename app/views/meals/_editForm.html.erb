@@ -1,0 +1,89 @@
+<<<<<<< HEAD
+
+<%= form_for(@meal) do |f| %>
+  <% if @meal.errors.any? %>
+    <div id="error_explanation">
+      <ul style="list-style: none;">
+      <% @meal.errors.full_messages.each do |msg| %>
+        <li><%=msg%></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name_english %><br />
+    <%= f.text_field :name_english,value: @meal.name_english,class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :name_urdu %><br />
+    <%= f.text_field :name_urdu,value: @meal.name_urdu,class: "form-control",lang: "ur" %>
+  </p>
+  <p id="category1">
+    <%= f.label :category_english %><br />
+    <%= f.select :category_english,@categories_english,class: "form-control",lang: "ur" %>
+  </p>
+  <p id="category2">
+    <%= f.label :category_urdu %><br />
+    <%= f.select :category_urdu,@categories_urdu,class: "form-control",lang: "ur" %>
+  </p>
+  <p>
+  	<%if @meal.price_half!=nil%>
+    <%= f.label :price_full %><br />
+    <%else%>
+     <%= f.label :price %><br />
+    <%end%>
+    <%= f.number_field :price_full,value: @meal.price_full,class: "form-control btn btn-default",:min=>1 %>
+  </p>
+  <%if @meal.price_half!=nil%>
+  <p>
+    <%= f.label :price_half %><br />
+    <%= f.number_field :price_half,value: @meal.price_half,class: "form-control btn btn-default",:min=>1 %>
+  </p><%end%><br />
+  <%=f.submit 'Update Meal',:class=>"btn btn-primary"%>
+<% end %>
+
+=======
+
+<%= form_for(@meal) do |f| %>
+  <% if @meal.errors.any? %>
+    <div id="error_explanation">
+      <ul style="list-style: none;">
+      <% @meal.errors.full_messages.each do |msg| %>
+        <li><%=msg%></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name_english %><br />
+    <%= f.text_field :name_english,value: @meal.name_english,class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :name_urdu %><br />
+    <%= f.text_field :name_urdu,value: @meal.name_urdu,class: "form-control",lang: "ur" %>
+  </p>
+  <p id="category1">
+    <%= f.label :category_english %><br />
+    <%= f.select :category_english,@categories_english,class: "form-control",lang: "ur" %>
+  </p>
+  <p id="category2">
+    <%= f.label :category_urdu %><br />
+    <%= f.select :category_urdu,@categories_urdu,class: "form-control",lang: "ur" %>
+  </p>
+  <p>
+  	<%if @meal.price_half!=nil%>
+    <%= f.label :price_full %><br />
+    <%else%>
+     <%= f.label :price %><br />
+    <%end%>
+    <%= f.number_field :price_full,value: @meal.price_full,class: "form-control btn btn-default",:min=>1 %>
+  </p>
+  <%if @meal.price_half!=nil%>
+  <p>
+    <%= f.label :price_half %><br />
+    <%= f.number_field :price_half,value: @meal.price_half,class: "form-control btn btn-default",:min=>1 %>
+  </p><%end%><br />
+  <%=f.submit 'Update Meal',:class=>"btn btn-primary"%>
+<% end %>
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

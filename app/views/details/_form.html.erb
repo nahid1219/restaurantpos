@@ -1,0 +1,79 @@
+<<<<<<< HEAD
+
+<%= form_for(@detail) do |f| %>
+  <% if @detail.errors.any? %>
+    <div id="error_explanation">
+      <ul style="list-style: none;">
+      <% @detail.errors.full_messages.each do |msg| %>
+        <li><%=msg%></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name_english,class: "form-control", value: @detail.name %>
+  </p>
+  <p>
+    <%= f.label :city %>
+    <%= f.text_field :city,class: "form-control", value: @detail.city %>
+  </p>
+  <p>
+    <%= f.label :phone_1 %>
+    <%= f.text_field :phone1,class: "form-control",value: @detail.phone1 %>
+  </p>
+  <p>
+    <%= f.label :phone_2 %>
+    <%= f.text_field :phone2,class: "form-control",value: @detail.phone2 %>
+  </p>
+  <p>
+    <%= f.label :address %>
+    <%= f.text_field :address,class: "form-control",value: @detail.address %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email,class: "form-control",value: @detail.email,title: 'Daily Reports Will Be Sent To This Email.' %>
+  </p><br />
+  <%=f.submit 'Update Details',:class=>"btn btn-primary form-control"%>
+<% end %>
+
+=======
+
+<%= form_for(@detail) do |f| %>
+  <% if @detail.errors.any? %>
+    <div id="error_explanation">
+      <ul style="list-style: none;">
+      <% @detail.errors.full_messages.each do |msg| %>
+        <li><%=msg%></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name_english,class: "form-control", value: @detail.name %>
+  </p>
+  <p>
+    <%= f.label :city %>
+    <%= f.text_field :city,class: "form-control", value: @detail.city %>
+  </p>
+  <p>
+    <%= f.label :phone_1 %>
+    <%= f.text_field :phone1,class: "form-control",value: @detail.phone1 %>
+  </p>
+  <p>
+    <%= f.label :phone_2 %>
+    <%= f.text_field :phone2,class: "form-control",value: @detail.phone2 %>
+  </p>
+  <p>
+    <%= f.label :address %>
+    <%= f.text_field :address,class: "form-control",value: @detail.address %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email,class: "form-control",value: @detail.email,title: 'Daily Reports Will Be Sent To This Email.' %>
+  </p><br />
+  <%=f.submit 'Update Details',:class=>"btn btn-primary form-control"%>
+<% end %>
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

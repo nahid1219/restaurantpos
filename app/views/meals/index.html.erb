@@ -1,0 +1,316 @@
+<<<<<<< HEAD
+<!-- <br /><br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			
+		</div>
+		<div class="col-md-9">
+			<h3>Restaurant Admin Backend</h3>
+			<div class="pull-right">
+				<%=link_to 'Logout' ,log_out_path, method: :delete, class: "btn btn-warning", style: "margin-top: -30px;" %>
+			</div>
+		</div>
+	</div>
+	<d>
+</div>
+<br /><br /> -->
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <%=link_to 'Home',admins_path%>
+                </li>
+                <li>
+                    <%=link_to 'Tables',tables_path%>
+                </li>
+                <li>
+                    <%=link_to 'Meals',meals_path%>
+                </li>
+                <li>
+                    <%=link_to 'Restaurant Details',edit_detail_path(@detail)%>
+                </li>
+                <li>
+                    <%=link_to 'Reports',reports_path%>
+                </li>
+                <li>
+                    <%=link_to 'Users',users_path %>
+                </li>
+                <li>
+                    <%=link_to 'Logout',log_out_path %>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                    	<a href="#menu-toggle" class="btn btn-default pull-right" id="menu-toggle">Toggle Menu</a>
+                        <h1>Dishes and Their Prices</h1>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-lg-3">
+                		<%=link_to 'New Dish',new_meal_path,:class=>"btn btn-primary btn-large"%>
+                	</div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9"  style="height: 600px; overflow-y: scroll; border-color: black; border-width:thick; border: *;">
+                    	<div class="tab-content">
+							<% c=1%>
+							<%@categories.each do |category|%>
+							<% i=0%>
+							<div class="tab-pane" id="<%= "menu"+c.to_s%>">
+								<h3><%= category%></h3>
+								<%meals=Meal.all.where(category_english: category).to_a%>
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-md-12">
+											<table class="table" style="border: none;">
+												<tr><th></th><th>Name</th><th>Price(full)</th><th>Price(half)</th><th></th><th></th></tr>
+											  <%while i<meals.size do%>
+												<tr>
+													
+													<td class="menu-item">
+														
+														<%= image_tag meals[i].meal_name+".png",:style=>"width: 100px; height: 75px;"%>
+													</td>
+													<td>
+														<%= label_tag meals[i].name_english,nil,:style=>'font-size: medium;'%>
+													</td>
+													<td>
+														<%=meals[i].price_full%>
+													</td>
+													<td>
+														<%=meals[i].price_half%>
+													</td>
+													<td><%=link_to 'Edit',edit_meal_path(meals[i])%></td>
+													<td><%=link_to 'Delete',meal_path(meals[i]),:method=>:delete%></td>
+													
+													<%i=i+1%>
+												</tr>
+												<%end%>
+												</table>
+											</div>
+										</div>
+								</div>
+							</div>
+							<% c=c+1%>
+							<%end%>
+							<div class="tab-pane" id="deals">
+								<% i=0%>
+								<div class="container-fluid">
+									<table class="table" style="border: none;">
+										<tr><th></th><th>Name</th><th>Price</th><th></th><th></th></tr>
+									  <%while i<@deals.size do%>
+										<tr>
+											
+											<td class="menu-item">
+												
+												<%= image_tag "deal "+@deals[i].deal_no.to_s+".png",:class=>"img-thumbnail",:style=>"width: 160px; height: 120px;"%>
+											
+											</td>
+											<td>
+												
+											<%= radio_button_tag "name",@deals[i].name%><%= label_tag @deals[i].name,nil,:style=>'font-size: medium;'%>
+											</td>
+											<td>
+												<%=@deals[i].price%>
+											</td>
+											<td>
+												<%=link_to 'Edit',edit_deal_path(@deals[i])%>
+											</td>
+											<td>
+												<%=link_to 'Delete',deal_path(@deals[i]),:method=>:delete,:confirm=>"Are you sure you want to delete this item?"%>
+											</td>
+											<%i=i+1%>
+										</tr>
+										<%end%>
+										</table>
+								</div>
+							</div>
+						</div>	
+                    </div>
+                    <div class="col-lg-3">
+                    	<ul class="sidebar-nav"  style="background-color: black;" data-tabs="tabs">
+							<%c=1%>
+							<%@categories.each do |category|%>
+								<%if c==1%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category%></a></li>
+								<%else%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category%></a></li>
+								<%end%>
+								<%c=c+1%>
+							<%end%>
+							<li style="font-size: large;" class="pull-right;"><a href="#deals" data-toggle="tab">Deals</a></li>
+						</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+=======
+<!-- <br /><br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			
+		</div>
+		<div class="col-md-9">
+			<h3>Restaurant Admin Backend</h3>
+			<div class="pull-right">
+				<%=link_to 'Logout' ,log_out_path, method: :delete, class: "btn btn-warning", style: "margin-top: -30px;" %>
+			</div>
+		</div>
+	</div>
+	<d>
+</div>
+<br /><br /> -->
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <%=link_to 'Home',admins_path%>
+                </li>
+                <li>
+                    <%=link_to 'Tables',tables_path%>
+                </li>
+                <li>
+                    <%=link_to 'Meals',meals_path%>
+                </li>
+                <li>
+                    <%=link_to 'Restaurant Details',edit_detail_path(@detail)%>
+                </li>
+                <li>
+                    <%=link_to 'Reports',reports_path%>
+                </li>
+                <li>
+                    <%=link_to 'Users',users_path %>
+                </li>
+                <li>
+                    <%=link_to 'Logout',log_out_path %>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                    	<a href="#menu-toggle" class="btn btn-default pull-right" id="menu-toggle">Toggle Menu</a>
+                        <h1>Dishes and Their Prices</h1>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-lg-3">
+                		<%=link_to 'New Dish',new_meal_path,:class=>"btn btn-primary btn-large"%>
+                	</div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9"  style="height: 600px; overflow-y: scroll; border-color: black; border-width:thick; border: *;">
+                    	<div class="tab-content">
+							<% c=1%>
+							<%@categories.each do |category|%>
+							<% i=0%>
+							<div class="tab-pane" id="<%= "menu"+c.to_s%>">
+								<h3><%= category%></h3>
+								<%meals=Meal.all.where(category_english: category).to_a%>
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-md-12">
+											<table class="table" style="border: none;">
+												<tr><th></th><th>Name</th><th>Price(full)</th><th>Price(half)</th><th></th><th></th></tr>
+											  <%while i<meals.size do%>
+												<tr>
+													
+													<td class="menu-item">
+														
+														<%= image_tag meals[i].meal_name+".png",:style=>"width: 100px; height: 75px;"%>
+													</td>
+													<td>
+														<%= label_tag meals[i].name_english,nil,:style=>'font-size: medium;'%>
+													</td>
+													<td>
+														<%=meals[i].price_full%>
+													</td>
+													<td>
+														<%=meals[i].price_half%>
+													</td>
+													<td><%=link_to 'Edit',edit_meal_path(meals[i])%></td>
+													<td><%=link_to 'Delete',meal_path(meals[i]),:method=>:delete%></td>
+													
+													<%i=i+1%>
+												</tr>
+												<%end%>
+												</table>
+											</div>
+										</div>
+								</div>
+							</div>
+							<% c=c+1%>
+							<%end%>
+							<div class="tab-pane" id="deals">
+								<% i=0%>
+								<div class="container-fluid">
+									<table class="table" style="border: none;">
+										<tr><th></th><th>Name</th><th>Price</th><th></th><th></th></tr>
+									  <%while i<@deals.size do%>
+										<tr>
+											
+											<td class="menu-item">
+												
+												<%= image_tag "deal "+@deals[i].deal_no.to_s+".png",:class=>"img-thumbnail",:style=>"width: 160px; height: 120px;"%>
+											
+											</td>
+											<td>
+												
+											<%= radio_button_tag "name",@deals[i].name%><%= label_tag @deals[i].name,nil,:style=>'font-size: medium;'%>
+											</td>
+											<td>
+												<%=@deals[i].price%>
+											</td>
+											<td>
+												<%=link_to 'Edit',edit_deal_path(@deals[i])%>
+											</td>
+											<td>
+												<%=link_to 'Delete',deal_path(@deals[i]),:method=>:delete,:confirm=>"Are you sure you want to delete this item?"%>
+											</td>
+											<%i=i+1%>
+										</tr>
+										<%end%>
+										</table>
+								</div>
+							</div>
+						</div>	
+                    </div>
+                    <div class="col-lg-3">
+                    	<ul class="sidebar-nav"  style="background-color: black;" data-tabs="tabs">
+							<%c=1%>
+							<%@categories.each do |category|%>
+								<%if c==1%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category%></a></li>
+								<%else%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category%></a></li>
+								<%end%>
+								<%c=c+1%>
+							<%end%>
+							<li style="font-size: large;" class="pull-right;"><a href="#deals" data-toggle="tab">Deals</a></li>
+						</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787
+    </div>

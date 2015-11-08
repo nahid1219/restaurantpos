@@ -1,0 +1,55 @@
+<<<<<<< HEAD
+
+<br /><br /><br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-6">
+			<%=form_tag receivings_path(:id=>@order.id),:class=>"pull-right",:id=>"take_cash" do%>
+				<%=label_tag :order_amount%><br />
+				<%=text_field "cash","oamount",:value=>@order.total,:readonly=>true%><br />
+				<%=label_tag :amount_taken%><br />
+				<%=text_field "cash","amount"%><br />
+				<%=label_tag :change%><br />
+				<%=text_field "cash","change",:readonly=>true%><br /><br />
+				<%=link_to "Back To Orders",new_order_path,:class=>"btn btn-default btn-lg"%>
+				<%=submit_tag 'Take Cash',:class=>"btn btn-primary btn-lg"%>
+			<%end%>
+		</div>
+		<div class="col-lg-6">
+			<div class="numpad pull-left">
+				 <a class="btn btn-lg btn-info">1</a class="btn btn-lg btn-info"><a class="btn btn-lg btn-info">2</a><a class="btn btn-lg btn-info">3</a><br />
+				 <a class="btn btn-lg btn-info">4</a><a class="btn btn-lg btn-info">5</a><a class="btn btn-lg btn-info">6</a><br />
+				 <a class="btn btn-lg btn-info">7</a><a class="btn btn-lg btn-info">8</a><a class="btn btn-lg btn-info">9</a><br /><a class="btn btn-lg btn-info">0</a><a class="btn btn-lg btn-info">C</a><br />
+  				
+  			</div>
+		</div>
+	</div>
+</div>
+=======
+
+<br /><br /><br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-6">
+			<%=form_tag receivings_path(:id=>@order.id),:class=>"pull-right",:id=>"take_cash" do%>
+				<%=label_tag :order_amount%><br />
+				<%=text_field "cash","oamount",:value=>@order.total,:readonly=>true%><br />
+				<%=label_tag :amount_taken%><br />
+				<%=text_field "cash","amount"%><br />
+				<%=label_tag :change%><br />
+				<%=text_field "cash","change",:readonly=>true%><br /><br />
+				<%=link_to "Back To Orders",new_order_path,:class=>"btn btn-default btn-lg"%>
+				<%=submit_tag 'Take Cash',:class=>"btn btn-primary btn-lg"%>
+			<%end%>
+		</div>
+		<div class="col-lg-6">
+			<div class="numpad pull-left">
+				 <a class="btn btn-lg btn-info">1</a class="btn btn-lg btn-info"><a class="btn btn-lg btn-info">2</a><a class="btn btn-lg btn-info">3</a><br />
+				 <a class="btn btn-lg btn-info">4</a><a class="btn btn-lg btn-info">5</a><a class="btn btn-lg btn-info">6</a><br />
+				 <a class="btn btn-lg btn-info">7</a><a class="btn btn-lg btn-info">8</a><a class="btn btn-lg btn-info">9</a><br /><a class="btn btn-lg btn-info">0</a><a class="btn btn-lg btn-info">C</a><br />
+  				
+  			</div>
+		</div>
+	</div>
+</div>
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

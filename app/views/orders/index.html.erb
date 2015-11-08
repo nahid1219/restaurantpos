@@ -1,0 +1,71 @@
+<<<<<<< HEAD
+<!-- <h1 class="text-center"> Welcome To Guj Masala</h1> -->
+
+<h3>Today's Balance:</h3>
+<%=link_to 'Close Restaurant',close_store_path ,confirm: "Are you sure you want to close the store?",:class=> "btn btn-lg btn-danger pull-right"%>
+<h4>Rs. <%=@total.to_s%></h4>
+
+<h3>All Open Orders Are Listed Here.</h3>
+<div class="pull-right">
+<%=link_to 'New Order',new_order_path,:class=>"btn btn-lg btn-primary"%>
+</div>
+<br /><br /><br /><br />
+
+
+<div class="container-fluid">
+	<!-- <div class="row">
+		<div class="col-lg-12">
+			<h3>Today's Balance:</h3>
+			<h4>Rs. <%=@total.to_s%></h4>
+			
+			<h3>All Open Orders Are Listed Here.</h3>
+			<div class="pull-right">
+			<%=link_to 'New Order',new_order_path,:class=>"btn btn-primary"%>
+			<%=link_to 'Logout',log_out_path,:method=>:delete,:confirm=>"Are you sure you want to logout?",:class=>"btn btn-warning"%><br /><br />
+			</div>
+		</div>
+	</div> -->
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<%=render :partial=>'showOrders'%>
+		</div>
+	</div>
+</div>
+	
+
+=======
+<!-- <h1 class="text-center"> Welcome To Guj Masala</h1> -->
+
+<h3>Today's Balance:</h3>
+<%=link_to 'Close Restaurant',close_store_path ,confirm: "Are you sure you want to close the store?",:class=> "btn btn-lg btn-danger pull-right"%>
+<h4>Rs. <%=@total.to_s%></h4>
+
+<h3>All Open Orders Are Listed Here.</h3>
+<div class="pull-right">
+<%=link_to 'New Order',new_order_path,:class=>"btn btn-lg btn-primary"%>
+</div>
+<br /><br /><br /><br />
+
+
+<div class="container-fluid">
+	<!-- <div class="row">
+		<div class="col-lg-12">
+			<h3>Today's Balance:</h3>
+			<h4>Rs. <%=@total.to_s%></h4>
+			
+			<h3>All Open Orders Are Listed Here.</h3>
+			<div class="pull-right">
+			<%=link_to 'New Order',new_order_path,:class=>"btn btn-primary"%>
+			<%=link_to 'Logout',log_out_path,:method=>:delete,:confirm=>"Are you sure you want to logout?",:class=>"btn btn-warning"%><br /><br />
+			</div>
+		</div>
+	</div> -->
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<%=render :partial=>'showOrders'%>
+		</div>
+	</div>
+</div>
+	
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

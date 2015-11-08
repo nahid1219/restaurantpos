@@ -1,0 +1,47 @@
+<<<<<<< HEAD
+
+<%= form_for(@table) do |f| %>
+  <% if @table.errors.any? %>
+    <div id="error_explanation">
+      <ul style="list-style: none;">
+      <% @table.errors.full_messages.each do |msg| %>
+        <li><%=msg%></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :table_number %><br />
+    <%= f.number_field :nmr,min: 1,:value=>@table.nmr %>
+  </p>
+  <p>
+    <%= f.label :seats %><br />
+    <%= f.number_field :seats,min: 2,:value=>@table.seats %>
+  </p>
+  <%=f.submit 'Create Table',:class=>"btn btn-primary"%>
+<% end %>
+
+=======
+
+<%= form_for(@table) do |f| %>
+  <% if @table.errors.any? %>
+    <div id="error_explanation">
+      <ul style="list-style: none;">
+      <% @table.errors.full_messages.each do |msg| %>
+        <li><%=msg%></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :table_number %><br />
+    <%= f.number_field :nmr,min: 1,:value=>@table.nmr %>
+  </p>
+  <p>
+    <%= f.label :seats %><br />
+    <%= f.number_field :seats,min: 2,:value=>@table.seats %>
+  </p>
+  <%=f.submit 'Create Table',:class=>"btn btn-primary"%>
+<% end %>
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

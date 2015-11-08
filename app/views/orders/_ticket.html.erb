@@ -1,0 +1,103 @@
+<<<<<<< HEAD
+<h4><%="Order Ticket For Table # "+@order.table.nmr.to_s%></h4><br />
+<h4><%="Ticket Number "+@current_ticket_number.to_s%></h4><br />
+<table style="border: 1px solid black;">
+	<tr style="border: 1px solid black;">
+		<th style="border: 1px solid black;">Name</th>
+		<th style="border: 1px solid black;">Quantity</th>
+	</tr>
+	<%@meal_orders.each do |meal_order|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=meal_order.meal.name_urdu+meal_order.get_category_for_ticket%></td>
+			<td style="border: 1px solid black;"><%=meal_order.quantity.to_s%></td>
+		</tr>
+	<%end%>
+	<%@deal_orders.each do |meal_order|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=meal_order.deal.name%></td>
+			<td style="border: 1px solid black;"><%=meal_order.quantity.to_s%></td>
+		</tr>
+	<%end%>
+</table>
+<%if @cancelled_meals.size!=0%>
+<h4>Cancelled Meals</h4>
+<table style="border: 1px solid black;">
+	<tr style="border: 1px solid black;">
+		<th style="border: 1px solid black;">Name</th>
+		<th style="border: 1px solid black;">Quantity</th>
+	</tr>
+	<%@cancelled_meals.each do |meal_order|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=meal_order.meal.name_urdu+meal_order.get_category_for_ticket%></td>
+			<td style="border: 1px solid black;"><%=meal_order.quantity.to_s%></td>
+		</tr>
+	<%end%>
+</table>
+<%end%>
+<%if @cancelled_deals.size!=0%>
+<h4>Cancelled Deals</h4>
+<table style="border: 1px solid black;">
+	<tr style="border: 1px solid black;">
+		<th style="border: 1px solid black;">Name</th>
+		<th style="border: 1px solid black;">Quantity</th>
+	</tr>
+	<%@cancelled_deals.each do |meal_order|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=meal_order.deal.name%></td>
+			<td style="border: 1px solid black;"><%=meal_order.quantity.to_s%></td>
+		</tr>
+	<%end%>
+</table>
+<%end%>
+=======
+<h4><%="Order Ticket For Table # "+@order.table.nmr.to_s%></h4><br />
+<h4><%="Ticket Number "+@current_ticket_number.to_s%></h4><br />
+<table style="border: 1px solid black;">
+	<tr style="border: 1px solid black;">
+		<th style="border: 1px solid black;">Name</th>
+		<th style="border: 1px solid black;">Quantity</th>
+	</tr>
+	<%@meal_orders.each do |meal_order|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=meal_order.meal.name_urdu+meal_order.get_category_for_ticket%></td>
+			<td style="border: 1px solid black;"><%=meal_order.quantity.to_s%></td>
+		</tr>
+	<%end%>
+	<%@deal_orders.each do |meal_order|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=meal_order.deal.name%></td>
+			<td style="border: 1px solid black;"><%=meal_order.quantity.to_s%></td>
+		</tr>
+	<%end%>
+</table>
+<%if @cancelled_meals.size!=0%>
+<h4>Cancelled Meals</h4>
+<table style="border: 1px solid black;">
+	<tr style="border: 1px solid black;">
+		<th style="border: 1px solid black;">Name</th>
+		<th style="border: 1px solid black;">Quantity</th>
+	</tr>
+	<%@cancelled_meals.each do |meal_order|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=meal_order.meal.name_urdu+meal_order.get_category_for_ticket%></td>
+			<td style="border: 1px solid black;"><%=meal_order.quantity.to_s%></td>
+		</tr>
+	<%end%>
+</table>
+<%end%>
+<%if @cancelled_deals.size!=0%>
+<h4>Cancelled Deals</h4>
+<table style="border: 1px solid black;">
+	<tr style="border: 1px solid black;">
+		<th style="border: 1px solid black;">Name</th>
+		<th style="border: 1px solid black;">Quantity</th>
+	</tr>
+	<%@cancelled_deals.each do |meal_order|%>
+		<tr style="border: 1px solid black;">
+			<td style="border: 1px solid black;"><%=meal_order.deal.name%></td>
+			<td style="border: 1px solid black;"><%=meal_order.quantity.to_s%></td>
+		</tr>
+	<%end%>
+</table>
+<%end%>
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

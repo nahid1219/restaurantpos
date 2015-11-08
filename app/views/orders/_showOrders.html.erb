@@ -1,0 +1,121 @@
+<<<<<<< HEAD
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-6">
+			<h3>Sit In Orders</h3>
+			<table class="table table-bordered table-striped table-condensed" style="background-color: white;">
+				<tr>
+					<th>Table</th>
+					<th>Receipt No</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				<%(0..@orders_sitin.size-1).each do |i|%>
+					<tr>
+						<td><%=@orders_sitin[i].table.nmr.to_s%></td>
+						<td><%=@orders_sitin[i].receiptno%></td>
+						<td><%=@orders_sitin[i].current_status%></td>
+						<%if @orders_sitin[i].status%>
+						<td><%=link_to 'Edit',edit_order_path(@orders_sitin[i]),:class=>"btn btn-primary"%></td>
+						<td><%=link_to 'Close',order_close_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary",confirm: "Are You Sure You Want To Close This Order? (Action is Irreversible)"%></td>
+						<td><%=link_to 'Show Ticket',order_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary"%></td>
+						<%else%>
+						<%if @orders_sitin[i].cash_received?%>
+						<td><%=link_to 'Show Receipt',order_bill_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary"%></td>
+						<td><%=@orders_sitin[i].total%></td>
+						<td><%=@orders_sitin[i].amount_received%></td>
+						<td><%=@orders_sitin[i].change%></td>
+						<%else%>
+						<td><%=link_to 'Show Receipt',order_bill_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary"%></td>
+						<td><%=link_to 'Take Cash',new_receiving_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary"%></td>
+						<td></td>
+						<%end%>
+						<%end%>
+					</tr>
+				<%end%>
+			</table>
+		</div>
+		<div class="col-lg-6">
+			<h3>Take Away Orders</h3>
+			<table class="table table-bordered table-striped table-condensed" style="background-color: white;">
+				<tr>
+					<th>Receipt No</th>
+					<th>Amount</th>
+					<th></th>
+					
+				</tr>
+				<%(0..@orders_takeaway.size-1).each do |i|%>
+					<tr>
+						<td><%=@orders_takeaway[i].receiptno%></td>
+						<td><%=@orders_takeaway[i].total%></td>
+						<td><%=link_to 'Show Receipt',order_bill_path(:id=>@orders_takeaway[i].id),:class=>"btn btn-primary"%></td>
+					</tr>
+				<%end%>
+			</table>
+		</div>
+	</div>
+</div>
+=======
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-6">
+			<h3>Sit In Orders</h3>
+			<table class="table table-bordered table-striped table-condensed" style="background-color: white;">
+				<tr>
+					<th>Table</th>
+					<th>Receipt No</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				<%(0..@orders_sitin.size-1).each do |i|%>
+					<tr>
+						<td><%=@orders_sitin[i].table.nmr.to_s%></td>
+						<td><%=@orders_sitin[i].receiptno%></td>
+						<td><%=@orders_sitin[i].current_status%></td>
+						<%if @orders_sitin[i].status%>
+						<td><%=link_to 'Edit',edit_order_path(@orders_sitin[i]),:class=>"btn btn-primary"%></td>
+						<td><%=link_to 'Close',order_close_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary",confirm: "Are You Sure You Want To Close This Order? (Action is Irreversible)"%></td>
+						<td><%=link_to 'Show Ticket',order_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary"%></td>
+						<%else%>
+						<%if @orders_sitin[i].cash_received?%>
+						<td><%=link_to 'Show Receipt',order_bill_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary"%></td>
+						<td><%=@orders_sitin[i].total%></td>
+						<td><%=@orders_sitin[i].amount_received%></td>
+						<td><%=@orders_sitin[i].change%></td>
+						<%else%>
+						<td><%=link_to 'Show Receipt',order_bill_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary"%></td>
+						<td><%=link_to 'Take Cash',new_receiving_path(:id=>@orders_sitin[i].id),:class=>"btn btn-primary"%></td>
+						<td></td>
+						<%end%>
+						<%end%>
+					</tr>
+				<%end%>
+			</table>
+		</div>
+		<div class="col-lg-6">
+			<h3>Take Away Orders</h3>
+			<table class="table table-bordered table-striped table-condensed" style="background-color: white;">
+				<tr>
+					<th>Receipt No</th>
+					<th>Amount</th>
+					<th></th>
+					
+				</tr>
+				<%(0..@orders_takeaway.size-1).each do |i|%>
+					<tr>
+						<td><%=@orders_takeaway[i].receiptno%></td>
+						<td><%=@orders_takeaway[i].total%></td>
+						<td><%=link_to 'Show Receipt',order_bill_path(:id=>@orders_takeaway[i].id),:class=>"btn btn-primary"%></td>
+					</tr>
+				<%end%>
+			</table>
+		</div>
+	</div>
+</div>
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

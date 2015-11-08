@@ -1,0 +1,39 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>gujmasala</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.aptana.ide.core.unifiedBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.radrails.rails.core.railsnature</nature>
+		<nature>com.aptana.ruby.core.rubynature</nature>
+	</natures>
+</projectDescription>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>gujmasala</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.aptana.ide.core.unifiedBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.radrails.rails.core.railsnature</nature>
+		<nature>com.aptana.ruby.core.rubynature</nature>
+	</natures>
+</projectDescription>
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

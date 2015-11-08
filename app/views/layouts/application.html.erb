@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paris Dhaba</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <style>
+  	@media print {
+	  body {
+	    width: 80px;
+	    height: 60px;
+	  }
+  /* etc */
+	}
+/*body{
+	background-image: url('<%=asset_path 'bg.png'%>');
+	background-repeat: no-repeat;
+	background-position-x: 350px;
+	background-position-y: 260px;
+}*/
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<div style="margin-left: 3%; margin-right: 3%;">
+				<%= yield %>	
+			</div>
+				
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	
+	 function PrintElem(elem)
+    {
+        Popup($(elem).html());
+        return false;
+    }
+
+    function Popup(data)
+    {
+        var mywindow = window.open('', 'new div', 'height=400,width=600');
+        mywindow.document.write('<html><head><style>@media print {body{font-size: 12px; width: 170px; height: 60px;}}</style><title>my div</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+
+	if($("#print_ticket").length!=0){
+		$("#print").click(function(){
+			PrintElem($("#print_ticket"));
+		});
+	}
+	if($("#print_bill").length!=0){
+		$("#print").click(function(){
+			PrintElem($("#print_bill"));
+		});
+	}
+	if($("#take_cash").length!=0){
+		var amount=0;
+		var amount_taken=0;
+		amount=$("#cash_oamount").val();
+		$("#take_cash").submit(function(e){
+			amount_taken=$("#cash_amount").val();
+			if(amount_taken.length==0){
+				alert("Enter Amount Given By Customer!!");
+				e.preventDefault();
+				return false;
+			}
+			if (parseInt(amount_taken)<parseInt(amount)){
+				alert("Order Amount Is Less Than Amount!!");
+				e.preventDefault();
+				return false;
+			}
+			
+		});
+		$("#cash_amount").keypress(function(){
+			amount_taken=$(this).val();
+			var change=-1*(amount-amount_taken);
+			if(change<0){
+				$("#cash_change").val("0");
+			}
+			else{
+				$("#cash_change").val(change.toString());
+			}
+		});
+		$(".numpad a").click(function(){
+			if($(this).text()=="C"){
+				$("#cash_amount").val("");
+			}
+			else{
+				$("#cash_amount").val($("#cash_amount").val()+$(this).text());
+			}
+			amount_taken=$("#cash_amount").val();
+			var change=-1*(amount-amount_taken);
+			if(change<0){
+				$("#cash_change").val("0");
+			}
+			else{
+				$("#cash_change").val(change.toString());
+			}
+		});
+	}
+	if($("#new_order").length!=0){
+		var meal_count=0;
+		$("#half").hide();
+		$("#full").hide();
+		$("#enter").hide();
+		$("#order_order_type_meal_type_false").attr('checked','checked');
+		$(".numpad a").click(function(){
+			if($(this).text()=="ENTER"){
+				if($('input[name=name]:checked').length==0){
+					alert("Please Select A Menu Item");
+					return;
+				}
+				else if ($("#count").val()==0){
+					alert("Enter A Quantity For Menu Item.");
+					return;
+				}
+				else{
+					meal_count=meal_count+1;
+					var meal_name=$('input[name=name]:checked').val();
+					var quantity=$("#count").val();
+					$("#meals").append("<div class='m"+meal_count.toString()+"'></div>");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][name]' value='"+meal_name.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][category]' value='full' style='width: 50px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][quantity]' value='"+quantity.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<a href='#' class='delete btn btn-default' style='font-size: small;'>Delete</a><br />");
+					$(".delete").on('click',function(){
+						$(this).parent().remove();
+					});
+					$("#count").val("");
+				}
+			}
+			else if($(this).text()=="فل"){
+				if($('input[name=name]:checked').length==0){
+					alert("Please Select A Menu Item");
+					return;
+				}
+				else if ($("#count").val()==0){
+					alert("Enter A Quantity For Menu Item.");
+					return;
+				}
+				else{
+					meal_count=meal_count+1;
+					var meal_name=$('input[name=name]:checked').val();
+					if (meal_name.indexOf("full")!=-1){
+						meal_name=meal_name.replace("full","full");
+					}
+					else if(meal_name.indexOf("half")!=-1){
+						meal_name=meal_name.replace("half","full");
+					}
+					var quantity=$("#count").val();
+					$("#meals").append("<div class='m"+meal_count.toString()+"'></div>");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][name]' value='"+meal_name.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][category]' value='full' style='width: 50px;' />");	
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][quantity]' value='"+quantity.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<a href='#' class='delete btn btn-default' style='font-size: small;'>Delete</a><br />");
+					$(".delete").on('click',function(){
+						$(this).parent().remove();
+					});
+					$("#count").val("");
+				}
+			}
+			else if($(this).text()=="ھاف"){
+				if($('input[name=name]:checked').length==0){
+					alert("Please Select A Menu Item");
+					return;
+				}
+				else if ($("#count").val()==0){
+					alert("Enter A Quantity For Menu Item.");
+					return;
+				}
+				else{
+					meal_count=meal_count+1;
+					var meal_name=$('input[name=name]:checked').val();
+					if (meal_name.indexOf("half")!=-1){
+						meal_name=meal_name.replace("half","half");
+					}
+					else if(meal_name.indexOf("full")!=-1){
+						meal_name=meal_name.replace("full","half");
+					}
+					var quantity=$("#count").val();
+					$("#meals").append("<div class='m"+meal_count.toString()+"'></div>");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][name]' value='"+meal_name.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][category]' value='half' style='width: 50px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][quantity]' value='"+quantity.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<a href='#' class='delete btn btn-default' style='font-size: small;'>Delete</a><br />");
+					$(".delete").on('click',function(){
+						$(this).parent().remove();
+					});
+					$("#count").val("");
+				}
+			}
+			else if($(this).text()=="C"){
+				$("#count").val("");
+			}
+			else{
+				$("#count").val($("#count").val()+$(this).text());
+			}
+			
+		});
+		$('input[name=name]').click(function(){
+			$("#count").val("");
+		});
+		$("#order_order_type_meal_type_true").change(function(){
+			if ($(this).is(':checked')){
+				$("#table").hide();
+			}
+		});
+		$("#order_order_type_meal_type_false").change(function(){
+			if ($(this).is(':checked')){
+				$("#table").show();
+			}
+		});
+		$("#take_away").click(function(){
+			$("#order_order_type_meal_type_true").prop('checked',true);
+			$("#table").hide();
+		});
+		$("#sit_in").click(function(){
+			$("#order_order_type_meal_type_false").prop('checked',true);
+			$("#table").show();
+		});
+		$('.menu-item').click(function(){
+			$(this).children("input[type=radio]").prop('checked',true);
+			var name= $(this).children("input[type=radio]").val();
+			// alert(name);
+			// return false;
+			$.ajax({
+			  type: "GET",
+			  url: "<%=meal_url(:id=>1)%>",
+			  data: {"name":name},
+			  dataType: "script" 
+			});
+		});
+		$("#new_order").submit(function(e){
+			if($("#meals").children().length==0){
+				alert("Select a dish and enter quantity!!");
+				e.preventDefault();
+			}
+		});
+	}
+	if($(".edit_order").length!=0){
+		$("#half").hide();
+		$("#full").hide();
+		$("#enter").hide();
+		var meal_count=0;
+		var ordered_meals=$("#ordered_meals > tbody").children().length;
+		$("#order_order_type_meal_type_false").attr('checked','checked');
+		$(".numpad a").click(function(){
+			if($(this).text()=="ENTER"){
+				if($('input[name=name]:checked').length==0){
+					alert("Please Select A Menu Item");
+					return;
+				}
+				else if ($("#count").val()==0){
+					alert("Enter A Quantity For Menu Item.");
+					return;
+				}
+				else{
+					meal_count=meal_count+1;
+					var meal_name=$('input[name=name]:checked').val();
+					var quantity=$("#count").val();
+					$("#meals").append("<div class='m"+meal_count.toString()+"'></div>");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][name]' value='"+meal_name.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][category]' value='full' style='width: 50px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][quantity]' value='"+quantity.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<a href='#' class='delete btn btn-default' style='font-size: small;'>Delete</a><br />");
+					$(".delete").on('click',function(){
+						$(this).parent().remove();
+					});
+					$("#count").val("");
+				}
+			}
+			else if($(this).text()=="فل"){
+				if($('input[name=name]:checked').length==0){
+					alert("Please Select A Menu Item");
+					return;
+				}
+				else if ($("#count").val()==0){
+					alert("Enter A Quantity For Menu Item.");
+					return;
+				}
+				else{
+					meal_count=meal_count+1;
+					var meal_name=$('input[name=name]:checked').val();
+					if (meal_name.indexOf("full")!=-1){
+						meal_name=meal_name.replace("full","full");
+					}
+					else if(meal_name.indexOf("half")!=-1){
+						meal_name=meal_name.replace("half","full");
+					}
+					var quantity=$("#count").val();
+					$("#meals").append("<div class='m"+meal_count.toString()+"'></div>");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][name]' value='"+meal_name.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][category]' value='full' style='width: 50px;' />");	
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][quantity]' value='"+quantity.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<a href='#' class='delete btn btn-default' style='font-size: small;'>Delete</a><br />");
+					$(".delete").on('click',function(){
+						$(this).parent().remove();
+					});
+					$("#count").val("");
+				}
+			}
+			else if($(this).text()=="ھاف"){
+				if($('input[name=name]:checked').length==0){
+					alert("Please Select A Menu Item");
+					return;
+				}
+				else if ($("#count").val()==0){
+					alert("Enter A Quantity For Menu Item.");
+					return;
+				}
+				else{
+					meal_count=meal_count+1;
+					var meal_name=$('input[name=name]:checked').val();
+					if (meal_name.indexOf("half")!=-1){
+						meal_name=meal_name.replace("half","half");
+					}
+					else if(meal_name.indexOf("full")!=-1){
+						meal_name=meal_name.replace("full","half");
+					}
+					var quantity=$("#count").val();
+					$("#meals").append("<div class='m"+meal_count.toString()+"'></div>");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][name]' value='"+meal_name.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][category]' value='half' style='width: 50px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][quantity]' value='"+quantity.toString()+"' style='width: 200px;' />");
+					$(".m"+meal_count.toString()).append("<a href='#' class='delete btn btn-default' style='font-size: small;'>Delete</a><br />");
+					$(".delete").on('click',function(){
+						$(this).parent().remove();
+					});
+					$("#count").val("");
+				}
+			}
+			else if($(this).text()=="C"){
+				$("#count").val("");
+			}
+			else{
+				$("#count").val($("#count").val()+$(this).text());
+			}
+			
+		});
+		/*$(".numpad a").click(function(){
+			if($(this).text()=="ENTER"){
+				if($('input[name=name]:checked').length==0){
+					alert("Please Select A Menu Item");
+					return;
+				}
+				else if ($("#count").val()==0){
+					alert("Enter A Quantity For Menu Item.");
+					return;
+				}
+				else{
+					meal_count=meal_count+1;
+					var meal_name=$('input[name=name]:checked').val();
+					var quantity=$("#count").val();
+					$("#meals").append("<div class='m"+meal_count.toString()+"'></div>");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][name]' value='"+meal_name.toString()+"' style='width: 180px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][quantity]' value='"+quantity.toString()+"' style='width: 180px;' />");
+					$(".m"+meal_count.toString()).append("<a href='#' class='delete btn btn-default' style='font-size: small;'>Delete</a><br />");
+					$(".delete").on('click',function(){
+						$(this).parent().remove();
+					});
+					$("#count").val("");
+				}
+			}
+			else if($(this).text()=="فل"){
+				if($('input[name=name]:checked').length==0){
+					alert("Please Select A Menu Item");
+					return;
+				}
+				else if ($("#count").val()==0){
+					alert("Enter A Quantity For Menu Item.");
+					return;
+				}
+				else{
+					meal_count=meal_count+1;
+					var meal_name=$('input[name=name]:checked').val();
+					if (meal_name.indexOf("full")!=-1){
+						meal_name=meal_name.replace("full","full");
+					}
+					else if(meal_name.indexOf("half")!=-1){
+						meal_name=meal_name.replace("half","full");
+					}
+					var quantity=$("#count").val();
+					$("#meals").append("<div class='m"+meal_count.toString()+"'></div>");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][name]' value='"+meal_name.toString()+"' style='width: 180px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][quantity]' value='"+quantity.toString()+"' style='width: 180px;' />");
+					$(".m"+meal_count.toString()).append("<a href='#' class='delete btn btn-default' style='font-size: small;'>Delete</a><br />");
+					$(".delete").on('click',function(){
+						$(this).parent().remove();
+					});
+					$("#count").val("");
+				}
+			}
+			else if($(this).text()=="ھاف"){
+				if($('input[name=name]:checked').length==0){
+					alert("Please Select A Menu Item");
+					return;
+				}
+				else if ($("#count").val()==0){
+					alert("Enter A Quantity For Menu Item.");
+					return;
+				}
+				else{
+					meal_count=meal_count+1;
+					var meal_name=$('input[name=name]:checked').val();
+					if (meal_name.indexOf("half")!=-1){
+						meal_name=meal_name.replace("half","half");
+					}
+					else if(meal_name.indexOf("full")!=-1){
+						meal_name=meal_name.replace("full","half");
+					}
+					var quantity=$("#count").val();
+					$("#meals").append("<div class='m"+meal_count.toString()+"'></div>");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][name]' value='"+meal_name.toString()+"' style='width: 180px;' />");
+					$(".m"+meal_count.toString()).append("<input name='order[meal][m"+meal_count.toString()+"][quantity]' value='"+quantity.toString()+"' style='width: 180px;' />");
+					$(".m"+meal_count.toString()).append("<a href='#' class='delete btn btn-default' style='font-size: small;'>Delete</a><br />");
+					$(".delete").on('click',function(){
+						$(this).parent().remove();
+					});
+					$("#count").val("");
+				}
+			}
+			else if($(this).text()=="C"){
+				$("#count").val("");
+			}
+			else{
+				$("#count").val($("#count").val()+$(this).text());
+			}
+			
+		});*/
+		
+		$('input[name=name]').click(function(){
+			$("#count").val("");
+		});
+		$('.menu-item').click(function(){
+			$(this).children("input[type=radio]").prop('checked',true);
+			var name= $(this).children("input[type=radio]").val();
+			// alert(name);
+			// return false;
+			$.ajax({
+			  type: "GET",
+			  url: "<%=meal_url(:id=>1)%>",
+			  data: {"name":name},
+			  dataType: "script" 
+			});
+		});
+		$(".edit_order").submit(function(e){
+			// if($("#meals").children().length==0 && $("#ordered_meals > tbody").children().length==ordered_meals){
+				// e.preventDefault();
+			// }
+			// if($("#ordered_meals > tbody").children().length==1){
+				// alert("Select a dish and enter quantity!!");
+				// e.preventDefault();
+			// }
+		});
+		
+	}
+	
+	if($("#menu-toggle").length!=0){
+		$("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });}
+</script>
+</body>
+</html>

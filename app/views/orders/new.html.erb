@@ -1,0 +1,312 @@
+<<<<<<< HEAD
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<h3>Today's Balance:</h3>
+			<h4>Rs. <%=@total.to_s%></h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<%=link_to 'New Order Form',new_order_path,:class=>"btn btn-primary btn-lg"%>
+			<%=link_to 'Close Restaurant',close_store_path ,confirm: "Are you sure you want to close the store?",:class=> "btn btn-lg btn-danger pull-right"%>
+
+		</div>
+	</div>
+</div><br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1>Create New Order</h1>
+					</div>
+				</div><br />
+
+				<div class="row">
+					<div class="col-lg-8">
+						<%=render :partial=>"form"%>
+					</div>
+					<div class="col-lg-4">
+						<div class="numpad pull-left">
+							<input type="text" id="count" /><br /><br />
+							 <a class="btn btn-lg btn-info">1</a class="btn btn-lg btn-info"><a class="btn btn-lg btn-info">2</a><a class="btn btn-lg btn-info">3</a><br />
+							 <a class="btn btn-lg btn-info">4</a><a class="btn btn-lg btn-info">5</a><a class="btn btn-lg btn-info">6</a><br />
+							 <a class="btn btn-lg btn-info">7</a><a class="btn btn-lg btn-info">8</a><a class="btn btn-lg btn-info">9</a><br /><a class="btn btn-lg btn-info">0</a><a class="btn btn-lg btn-info">C</a><br />
+			  				 <a class="btn btn-lg btn-primary" id="full">فل</a><a class="btn btn-lg btn-primary" id="half">ھاف</a><a class="btn btn-primary" id="enter">ENTER</a>
+			  			</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-8">
+						 <div class="tab-content">
+							<% c=1%>
+							<%@categories.each do |category|%>
+							<% i=0%>
+							<%size=0%>
+							<div class="tab-pane" id="<%= "menu"+c.to_s%>">
+								<legend><%= category%></legend>
+								<%meals=Meal.all.where(category_english: category).select(:name_english,:name_urdu).to_a%>
+								<%if meals.size%2!=0%>
+									<%size=meals.size+1%>
+								<%else%>
+									<%size=meals.size%>
+								<%end%>
+								<div class="container-fluid" style="height: 500px; overflow-y: auto; border-color: black; border-width:thick; border: *;">
+									<div class="row">
+										<div class="col-md-12">
+											<table class="table" style="border: none;">
+											  <%while i+2<=size do%>
+												<tr>
+													<td class="menu-item">
+														<%name=meals[i].name_english%>
+														<%= image_tag name+".png",:style=>"width: 100px; height: 75px;"%>
+														<br />
+														<%= radio_button_tag "name",name%><%= label_tag name,nil,:style=>'font-size: medium;'%>
+													</td>
+													<%if meals[i+1]%>
+													<td class="menu-item">
+														<%name=meals[i+1].name_english%>
+														<%= image_tag name+".png",:style=>"width: 100px; height: 75px;"%>
+														<br />
+														<%= radio_button_tag "name",name%><%= label_tag name,nil,:style=>'font-size: medium;'%>
+													</td>
+													<%end%>
+													<%i=i+2%>
+												</tr>
+												<%end%>
+												</table>
+											</div>
+										</div>
+								</div>
+							</div>
+							<% c=c+1%>
+							<%end%>
+							<div class="tab-pane" id="deals">
+								<% m=0%>
+								<div class="container-fluid"   style="height: 500px; overflow-y: scroll; border-color: black; border-width:thick; border: *;">
+									<div class="col-md-12">
+											<table class="table" style="border: none;">
+											  <%while m+2<=@deals.size do%>
+												<tr>
+													<td class="menu-item">
+														<%= image_tag @deals[m].name+".png",:class=>"img-thumbnail",:style=>"width: 160px; height: 120px;"%>
+														<br />
+														<%= radio_button_tag "name",@deals[m].name%><%= label_tag @deals[m].name,nil,:style=>'font-size: medium;'%>
+													</td>
+													<%if @deals[m+1]%>
+													<td class="menu-item">
+														<%= image_tag @deals[m+1].name+".png",:class=>"img-thumbnail",:style=>"width: 160px; height: 120px;"%>
+														<br />
+														<%= radio_button_tag "name",@deals[m+1].name%><%= label_tag @deals[m+1].name,nil,:style=>'font-size: medium;'%>
+													</td>
+													<%end%>
+													<%m=m+2%>
+												</tr>
+												<%end%>
+												</table>
+											</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+					<div class="col-lg-4">
+						<ul class="sidebar-nav"  style="background-color: black;" data-tabs="tabs">
+							<%c=1%>
+							<%@categories.each do |category|%>
+								<%if c==1%>
+								<%if category=="Naan"%>
+								<li style="font-size: large;" class="pull-right ;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category+"/Roti"%></a></li>
+								<%else%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category%></a></li>
+								<%end%>
+								<%else%>
+								<%if category=="Naan"%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category+"/Roti"%></a></li>
+								<%else%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category%></a></li>
+								<%end%>
+								<%end%>
+								<%c=c+1%>
+							<%end%>
+							<li style="font-size: large;" class="pull-right;"><a href="#deals" data-toggle="tab">Deals/FastFood</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+				
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<%=render :partial=>'showOrders'%>
+		</div>
+	</div>
+</div>
+
+
+=======
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<h3>Today's Balance:</h3>
+			<h4>Rs. <%=@total.to_s%></h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<%=link_to 'New Order Form',new_order_path,:class=>"btn btn-primary btn-lg"%>
+			<%=link_to 'Close Restaurant',close_store_path ,confirm: "Are you sure you want to close the store?",:class=> "btn btn-lg btn-danger pull-right"%>
+
+		</div>
+	</div>
+</div><br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1>Create New Order</h1>
+					</div>
+				</div><br />
+
+				<div class="row">
+					<div class="col-lg-8">
+						<%=render :partial=>"form"%>
+					</div>
+					<div class="col-lg-4">
+						<div class="numpad pull-left">
+							<input type="text" id="count" /><br /><br />
+							 <a class="btn btn-lg btn-info">1</a class="btn btn-lg btn-info"><a class="btn btn-lg btn-info">2</a><a class="btn btn-lg btn-info">3</a><br />
+							 <a class="btn btn-lg btn-info">4</a><a class="btn btn-lg btn-info">5</a><a class="btn btn-lg btn-info">6</a><br />
+							 <a class="btn btn-lg btn-info">7</a><a class="btn btn-lg btn-info">8</a><a class="btn btn-lg btn-info">9</a><br /><a class="btn btn-lg btn-info">0</a><a class="btn btn-lg btn-info">C</a><br />
+			  				 <a class="btn btn-lg btn-primary" id="full">فل</a><a class="btn btn-lg btn-primary" id="half">ھاف</a><a class="btn btn-primary" id="enter">ENTER</a>
+			  			</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-8">
+						 <div class="tab-content">
+							<% c=1%>
+							<%@categories.each do |category|%>
+							<% i=0%>
+							<%size=0%>
+							<div class="tab-pane" id="<%= "menu"+c.to_s%>">
+								<legend><%= category%></legend>
+								<%meals=Meal.all.where(category_english: category).select(:name_english,:name_urdu).to_a%>
+								<%if meals.size%2!=0%>
+									<%size=meals.size+1%>
+								<%else%>
+									<%size=meals.size%>
+								<%end%>
+								<div class="container-fluid" style="height: 500px; overflow-y: auto; border-color: black; border-width:thick; border: *;">
+									<div class="row">
+										<div class="col-md-12">
+											<table class="table" style="border: none;">
+											  <%while i+2<=size do%>
+												<tr>
+													<td class="menu-item">
+														<%name=meals[i].name_english%>
+														<%= image_tag name+".png",:style=>"width: 100px; height: 75px;"%>
+														<br />
+														<%= radio_button_tag "name",name%><%= label_tag name,nil,:style=>'font-size: medium;'%>
+													</td>
+													<%if meals[i+1]%>
+													<td class="menu-item">
+														<%name=meals[i+1].name_english%>
+														<%= image_tag name+".png",:style=>"width: 100px; height: 75px;"%>
+														<br />
+														<%= radio_button_tag "name",name%><%= label_tag name,nil,:style=>'font-size: medium;'%>
+													</td>
+													<%end%>
+													<%i=i+2%>
+												</tr>
+												<%end%>
+												</table>
+											</div>
+										</div>
+								</div>
+							</div>
+							<% c=c+1%>
+							<%end%>
+							<div class="tab-pane" id="deals">
+								<% m=0%>
+								<div class="container-fluid"   style="height: 500px; overflow-y: scroll; border-color: black; border-width:thick; border: *;">
+									<div class="col-md-12">
+											<table class="table" style="border: none;">
+											  <%while m+2<=@deals.size do%>
+												<tr>
+													<td class="menu-item">
+														<%= image_tag @deals[m].name+".png",:class=>"img-thumbnail",:style=>"width: 160px; height: 120px;"%>
+														<br />
+														<%= radio_button_tag "name",@deals[m].name%><%= label_tag @deals[m].name,nil,:style=>'font-size: medium;'%>
+													</td>
+													<%if @deals[m+1]%>
+													<td class="menu-item">
+														<%= image_tag @deals[m+1].name+".png",:class=>"img-thumbnail",:style=>"width: 160px; height: 120px;"%>
+														<br />
+														<%= radio_button_tag "name",@deals[m+1].name%><%= label_tag @deals[m+1].name,nil,:style=>'font-size: medium;'%>
+													</td>
+													<%end%>
+													<%m=m+2%>
+												</tr>
+												<%end%>
+												</table>
+											</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+					<div class="col-lg-4">
+						<ul class="sidebar-nav"  style="background-color: black;" data-tabs="tabs">
+							<%c=1%>
+							<%@categories.each do |category|%>
+								<%if c==1%>
+								<%if category=="Naan"%>
+								<li style="font-size: large;" class="pull-right ;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category+"/Roti"%></a></li>
+								<%else%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category%></a></li>
+								<%end%>
+								<%else%>
+								<%if category=="Naan"%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category+"/Roti"%></a></li>
+								<%else%>
+								<li style="font-size: large;" class="pull-right;"><a href="<%="#menu"+c.to_s%>" data-toggle="tab"><%=category%></a></li>
+								<%end%>
+								<%end%>
+								<%c=c+1%>
+							<%end%>
+							<li style="font-size: large;" class="pull-right;"><a href="#deals" data-toggle="tab">Deals/FastFood</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+				
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<%=render :partial=>'showOrders'%>
+		</div>
+	</div>
+</div>
+
+
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787
+ 

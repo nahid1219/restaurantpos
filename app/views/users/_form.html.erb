@@ -1,0 +1,70 @@
+<<<<<<< HEAD
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h4>Form is invalid</h4>
+      <ul style="list-style: none;">
+        <% for message in @user.errors.full_messages %>
+          <li><%= message+"." %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name,class:"form-control",:value=>@user.user_name %>
+  </p>
+  <p>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name,class:"form-control",:value=>@user.first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name,class:"form-control",:value=>@user.last_name%>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password,class:"form-control" %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation,class:"form-control" %>
+  </p><br />
+  <p class="button"><%= f.submit :class=>"btn btn-primary form-control" %></p>
+=======
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h4>Form is invalid</h4>
+      <ul style="list-style: none;">
+        <% for message in @user.errors.full_messages %>
+          <li><%= message+"." %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name,class:"form-control",:value=>@user.user_name %>
+  </p>
+  <p>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name,class:"form-control",:value=>@user.first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name,class:"form-control",:value=>@user.last_name%>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password,class:"form-control" %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation,class:"form-control" %>
+  </p><br />
+  <p class="button"><%= f.submit :class=>"btn btn-primary form-control" %></p>
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787
+<% end %>

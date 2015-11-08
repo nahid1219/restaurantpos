@@ -1,0 +1,61 @@
+<<<<<<< HEAD
+<table class="table table-bordered table-condensed">
+	<tr>
+		<th>Table Number</th>
+		<th>Number of Seats</th>
+		<th>Number of Orders</th>
+		<th>Income (Rs)</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<%total=0%>
+	<%@tables.each do |table|%>
+		<%t=table.sum_total_orders%>
+		<%total=total+t%>
+		<tr>
+			<td><%=table.nmr.to_s%></td>
+			<td><%=table.seats.to_s%></td>
+			<td><%=table.total_orders%></td>
+			<td><%=t%></td>
+			<td><%=link_to 'Edit',edit_table_path(table)%></td>
+			<td><%=link_to 'Delete',table_path(:id=>table.id),:method=>:delete%></td>
+		</tr>
+	<%end%>
+	<tr>
+		<td></td>
+		<td></td>
+		<th>Total</th>
+		<td><%=total%></td>
+	</tr>
+</table>
+=======
+<table class="table table-bordered table-condensed">
+	<tr>
+		<th>Table Number</th>
+		<th>Number of Seats</th>
+		<th>Number of Orders</th>
+		<th>Income (Rs)</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<%total=0%>
+	<%@tables.each do |table|%>
+		<%t=table.sum_total_orders%>
+		<%total=total+t%>
+		<tr>
+			<td><%=table.nmr.to_s%></td>
+			<td><%=table.seats.to_s%></td>
+			<td><%=table.total_orders%></td>
+			<td><%=t%></td>
+			<td><%=link_to 'Edit',edit_table_path(table)%></td>
+			<td><%=link_to 'Delete',table_path(:id=>table.id),:method=>:delete%></td>
+		</tr>
+	<%end%>
+	<tr>
+		<td></td>
+		<td></td>
+		<th>Total</th>
+		<td><%=total%></td>
+	</tr>
+</table>
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787

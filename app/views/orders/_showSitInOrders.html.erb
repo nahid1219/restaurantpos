@@ -1,0 +1,44 @@
+<<<<<<< HEAD
+<table class="table table-bordered table-striped table-hover">
+	<tr>
+		<th>Table</th>
+		<th>Receipt No</th>
+		<th>Status</th>
+		<th></th><th></th>
+	</tr>
+	<%@sitin_orders.each do |order|%>
+		<tr>
+			<td><%=order.table.nmr.to_s%></td>
+			<td><%=order.receiptno%></td>
+			<td><%=order.current_status%></td>
+			<%if order.status%>
+			<td><%=link_to 'Edit',edit_order_path(order)%></td>
+			<td><%=link_to 'Close',order_close_path(:id=>order.id),confirm: "Are You Sure You Want To Close This Order? (Action is Irreversible)"%></td>
+			<%else%>
+			<td><%=link_to 'Show Receipt',order_bill_path(:id=>order.id)%></td><td></td>
+			<%end%>
+		</tr>
+	<%end%>
+=======
+<table class="table table-bordered table-striped table-hover">
+	<tr>
+		<th>Table</th>
+		<th>Receipt No</th>
+		<th>Status</th>
+		<th></th><th></th>
+	</tr>
+	<%@sitin_orders.each do |order|%>
+		<tr>
+			<td><%=order.table.nmr.to_s%></td>
+			<td><%=order.receiptno%></td>
+			<td><%=order.current_status%></td>
+			<%if order.status%>
+			<td><%=link_to 'Edit',edit_order_path(order)%></td>
+			<td><%=link_to 'Close',order_close_path(:id=>order.id),confirm: "Are You Sure You Want To Close This Order? (Action is Irreversible)"%></td>
+			<%else%>
+			<td><%=link_to 'Show Receipt',order_bill_path(:id=>order.id)%></td><td></td>
+			<%end%>
+		</tr>
+	<%end%>
+>>>>>>> 7b65526ebc566b406761db5db874edfff6dcd787
+</table>
